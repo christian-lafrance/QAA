@@ -19,35 +19,35 @@ f4="29_4E_fox_S21_L008_R2_001.fastq.gz"
 
 tools_dir="/projects/bgmp/clafranc/miniconda3/envs/bgmp_py310/bin"
 
-# /usr/bin/time -v STAR --runThreadN 8 \
-# --runMode genomeGenerate \
-# --genomeDir  $myDir/mouse_v107_GRCm39_db \
-# --genomeFastaFiles $myDir/Mus_musculus.GRCm39.dna.primary_assembly.fa \
-# --sjdbGTFfile $myDir/Mus_musculus.GRCm39.107.gtf
+/usr/bin/time -v STAR --runThreadN 8 \
+--runMode genomeGenerate \
+--genomeDir  $myDir/mouse_v107_GRCm39_db \
+--genomeFastaFiles $myDir/Mus_musculus.GRCm39.dna.primary_assembly.fa \
+--sjdbGTFfile $myDir/Mus_musculus.GRCm39.107.gtf
 
-# /usr/bin/time -v STAR --runThreadN 8 --runMode alignReads \
-# --outFilterMultimapNmax 3 \
-# --outSAMunmapped Within KeepPairs \
-# --alignIntronMax 1000000 --alignMatesGapMax 1000000 \
-# --readFilesCommand zcat \
-# --readFilesIn $readsDir/$f1 $readsDir/$f2 \
-# --genomeDir $myDir/mouse_v107_GRCm39_db \
-# --outFileNamePrefix mouse_ens107_GRCm39_both
+/usr/bin/time -v STAR --runThreadN 8 --runMode alignReads \
+--outFilterMultimapNmax 3 \
+--outSAMunmapped Within KeepPairs \
+--alignIntronMax 1000000 --alignMatesGapMax 1000000 \
+--readFilesCommand zcat \
+--readFilesIn $readsDir/$f1 $readsDir/$f2 \
+--genomeDir $myDir/mouse_v107_GRCm39_db \
+--outFileNamePrefix mouse_ens107_GRCm39_both
 
-# /usr/bin/time -v STAR --runThreadN 8 --runMode alignReads \
-# --outFilterMultimapNmax 3 \
-# --outSAMunmapped Within KeepPairs \
-# --alignIntronMax 1000000 --alignMatesGapMax 1000000 \
-# --readFilesCommand zcat \
-# --readFilesIn $readsDir/$f3 $readsDir/$f4 \
-# --genomeDir $myDir/mouse_v107_GRCm39_db \
-# --outFileNamePrefix mouse_ens107_GRCm39_fox
+/usr/bin/time -v STAR --runThreadN 8 --runMode alignReads \
+--outFilterMultimapNmax 3 \
+--outSAMunmapped Within KeepPairs \
+--alignIntronMax 1000000 --alignMatesGapMax 1000000 \
+--readFilesCommand zcat \
+--readFilesIn $readsDir/$f3 $readsDir/$f4 \
+--genomeDir $myDir/mouse_v107_GRCm39_db \
+--outFileNamePrefix mouse_ens107_GRCm39_fox
 
-# ./parse_sam.py -f mouse_ens107_GRCm39_both_Aligned.out.sam
+./parse_sam.py -f mouse_ens107_GRCm39_both_Aligned.out.sam
 
-# ./parse_sam.py -f mouse_ens107_GRCm39_foxAligned.out.sam
+./parse_sam.py -f mouse_ens107_GRCm39_foxAligned.out.sam
 
-# ./parse_sam.py -f /projects/bgmp/clafranc/bioinfo/Bi621/PS/PS8/Danio_rerio.GRCz11.dna.ens104.STAR_2.7.1a_alignedAligned.out.sam
+./parse_sam.py -f /projects/bgmp/clafranc/bioinfo/Bi621/PS/PS8/Danio_rerio.GRCz11.dna.ens104.STAR_2.7.1a_alignedAligned.out.sam
 
 
 htseq-count --stranded=yes -c 11_2H_both_stranded_counts.tsv -n 10 \
